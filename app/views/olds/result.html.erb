@@ -1,0 +1,10 @@
+<h1>Olds#result</h1>
+<p>Find me in app/views/olds/result.html.erb</p>
+
+<% @clanci.each do |version| %>
+	<h2><%= link_to version.title, version %></h2>
+	<p>Published at <%= version.created_at.strftime('%b %d, %Y') %></p>
+	<p>Updated at <%= version.updated_at.strftime('%b %d, %Y') %></p>
+	<p><%= truncate(version.content, length: 200) %></p>
+<% end %>
+

@@ -1,0 +1,19 @@
+<div class="container-fluid">
+ <div class="row">
+   <div class=" col-md-2 nav navbar-nav navbar-right" align="right" style="padding-right:100px;">
+    <%= render 'layouts/vote' %>
+  </div>
+  <div class="col-md-10 jumbotron">
+   <h1><%= @article.title %></h1>
+   <p><%= @article.content.html_safe %></p>
+   <div class="btn-group">
+    <%= link_to "Back", root_path, class: "btn btn-default" %>
+    <% if user_signed_in? %>
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+    <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <%= link_to "Old Version", olds_result_path(@article), class: "btn btn btn-info" %>
+  </div>
+</div>
+</div>
+<% end %>
+</div>

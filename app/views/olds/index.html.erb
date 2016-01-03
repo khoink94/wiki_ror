@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Olds</h1>
+
+<table>
+ 
+
+  <tbody>
+   <% @olds.each do |old| %>
+  <h2><%= link_to old.title, old %></h2>
+  <p>Published at <%= old.created_at.strftime('%b %d, %Y') %></p>
+  <p><%= truncate(old.content, length: 200) %></p>
+<% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Old', new_old_path %>

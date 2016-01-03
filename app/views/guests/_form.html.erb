@@ -1,0 +1,12 @@
+<%= simple_form_for(@guest) do |f| %>
+  <%= f.error_notification %>
+<div class="form-signin">
+  <div class="form-inputs">
+    <%= f.input :ip, class: 'col-sm-2 control-label', placeholder: "Enter your IP" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:"btn btn-lg btn-primary btn-block"%>
+  </div>
+</div>
+<% end %>

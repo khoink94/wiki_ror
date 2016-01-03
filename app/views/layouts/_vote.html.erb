@@ -1,0 +1,24 @@
+<%= form_tag(article_path , :method => "get", id: "search-form") do %>
+<%= text_field_tag :comment, params[:comment], placeholder: "Suggest", style:" background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    border-radius: 4px;
+    height : 30px"%>
+<%= hidden_field_tag(:article_id,@article.id) %>
+<%= submit_tag "Suggest", :name => nil, class: "btn btn-default" , style:"
+    background-color: #E8E8E8"%>
+<% end %>
+
+<%= form_tag( articles_votes_path , :method => "get", id: "vote-form") do %>
+<% @clanci.each do |comment|%>
+<p>
+	<%= check_box_tag(comment.content,'yes')%>
+	<%= comment.content %>
+	<%= comment.votes %>
+</p>
+<% end %>
+<%= hidden_field_tag(:article_id,@article.id) %>
+<p><%= submit_tag "Vote", :name => nil, class: "btn btn-default",style:"
+    background-color: #E8E8E8" %></p>
+<% end %>

@@ -1,0 +1,9 @@
+
+
+<% @clanci.each do |article| %>
+<div class="jumbotron">
+		<h2><%= link_to article.title, article ,class: "list-group-item active"%></h2>
+		<p>Published at <%= article.created_at.strftime('%b %d, %Y') %></p>
+		<p><%= truncate(article.content.html_safe, length: 2000000) %></p>
+		</div>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for @article do |f| %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a Category" } %>
+  <%= f.input :title %>
+  <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
+  <%= tinymce %>
+  <%= f.submit %>
+
+<% end %>

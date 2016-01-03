@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wiki</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <style type="text/css" src="stylesheets/custom.css.scss"></style>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+     <!-- Brand and toggle get grouped for better mobile display -->
+
+
+     <%= link_to "Wikipedia", root_path, class: "navbar-brand" %>
+
+     <div class="collapse navbar-collapse" id="navbar-collapsable">
+      <ul class="nav navbar-nav ">
+        <% if user_signed_in? %>
+        <li><%= link_to "New Article", new_article_path %></li>
+        <% end %>
+        <li><%= render 'layouts/searchbar' =%></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" align="right">
+        <% if !user_signed_in? %>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <% else %>
+        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </div>  
+  </div>
+</nav>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-md-2 navbar navbar-left" align="left">
+    <ul class="list-group">
+     <li class="list-group-item"><%= link_to "New Category", new_category_path %></li>
+     <% Category.all.each do |category| %>
+     <li class="list-group-item"><%= link_to category.name, articles_path(category: category.name) %></li>
+     <% end %>
+   </ul>
+ </div>
+  <div class="col-md-8">
+  <%= yield %>
+ </div>
+   
+</div>
+    <div class="container">
+      <%= render 'layouts/footer' %>
+    </div>
+</div>
+</body>
+</html>

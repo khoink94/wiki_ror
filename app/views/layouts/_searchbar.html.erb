@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+	<%= form_tag( articles_result_path , :method => "get", id: "search-form") do %>
+  		<%= text_field_tag :search, params[:search], placeholder: "Search Articles" %>
+  		<%= submit_tag "Search", :name => nil %>
+	<% end %>
+<% else %>
+	<%= form_tag(  guests_path  , :method => "get", id: "search-form") do %>
+  		<%= text_field_tag :search, params[:search], placeholder: "Search Articles", style:" background-color: white;
+    background-image: url('searchicon.jpg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    border-radius: 4px;
+    height : 30px;"
+
+     %>
+  		<%= submit_tag "Search", :name => nil, class: "btn btn-default", style:"
+    background-color: #E8E8E8" %>
+  	<% end %>
+<% end %>
